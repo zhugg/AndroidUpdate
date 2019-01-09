@@ -15,7 +15,7 @@ public class ExampleActivity extends Activity {
         String url = "http://618bc512975a1d143f1d8d53bcf3ea55.apk";
         boolean isForceUpdate = false;
         String description = "1、修复已知bug\n2、添加XXX功能";
-        AlertDialogUtil.getInstance().alertVersion(this, description, url, isForceUpdate, R.drawable.icon);
+//        AlertDialogUtil.getInstance().alertVersion(this, description, url, isForceUpdate, R.drawable.icon);
 
     }
 }
