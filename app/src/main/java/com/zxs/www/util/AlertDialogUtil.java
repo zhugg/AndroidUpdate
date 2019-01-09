@@ -40,7 +40,8 @@ public class AlertDialogUtil {
      * @param isForceUpdate  是否强制更新
      * @param appIcon  app图标
      */
-    public AlertDialog alertVersion(final Activity mContext, final String description, final String download_url, final boolean isForceUpdate,final int appIcon) {
+    public AlertDialog alertVersion(final Activity mContext, final String description, final String download_url,
+                                    final boolean isForceUpdate,final int appIcon,final String application_id) {
         if (apkDialog != null && apkDialog.isShowing()) {
             apkDialog.dismiss();
         }
@@ -56,7 +57,7 @@ public class AlertDialogUtil {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 if (!TextUtils.isEmpty(download_url)) {
-                    openDownLoadService(mContext, download_url,appIcon, "中...");
+                    openDownLoadService(mContext, download_url,appIcon, "中...",application_id);
                 }
             }
         });
@@ -88,7 +89,7 @@ public class AlertDialogUtil {
      * @param downurl
      * @param tilte
      */
-    public static void openDownLoadService(Context context, String downurl,int appIcon, String tilte) {
+    public static void openDownLoadService(Context context, String downurl,int appIcon, String tilte,String application_id) {
         final ICallbackResult callback = new ICallbackResult() {
             @Override
             public void OnBackResult(Object s) {
@@ -109,6 +110,7 @@ public class AlertDialogUtil {
         };
         Intent intent = new Intent(context, DownloadService.class);
         intent.putExtra(DownloadService.BUNDLE_KEY_DOWNLOAD_URL, downurl);
+        intent.putExtra(DownloadService.BUNDLE_KEY_DOWNLOAD_APPLICATION_ID, application_id);
         intent.putExtra(DownloadService.BUNDLE_KEY_DOWNLOAD_ICON, appIcon);
         intent.putExtra(DownloadService.BUNDLE_KEY_TITLE, tilte);
         context.startService(intent);

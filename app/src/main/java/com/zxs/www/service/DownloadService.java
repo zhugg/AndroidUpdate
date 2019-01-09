@@ -35,7 +35,8 @@ import static android.app.NotificationManager.IMPORTANCE_DEFAULT;
 public class DownloadService extends Service {
 
     public static final String BUNDLE_KEY_DOWNLOAD_URL = "download_url";
-    public static final String BUNDLE_KEY_DOWNLOAD_ICON = "download_url";
+    public static final String BUNDLE_KEY_DOWNLOAD_APPLICATION_ID = "download_application_id";
+    public static final String BUNDLE_KEY_DOWNLOAD_ICON = "download_icon";
 
     public static final String BUNDLE_KEY_TITLE = "title";
 
@@ -54,6 +55,7 @@ public class DownloadService extends Service {
     private String mTitle = "正在下载%s";
 
     //文件保存路径
+    private String application_id ;
     private String saveFileName ;
     private String saveFileDir = FileUtil.getRootPath().getAbsolutePath()
             + File.separator
@@ -128,6 +130,7 @@ public class DownloadService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         downloadUrl = intent.getStringExtra(BUNDLE_KEY_DOWNLOAD_URL);
+        application_id = intent.getStringExtra(BUNDLE_KEY_DOWNLOAD_APPLICATION_ID);
         appIcon = intent.getIntExtra(BUNDLE_KEY_DOWNLOAD_ICON,0);
         saveFileName = saveFileDir + Constant.APP_NAME;
         mTitle = String.format(mTitle, intent.getStringExtra(BUNDLE_KEY_TITLE));
@@ -199,7 +202,7 @@ public class DownloadService extends Service {
         if (!apkfile.exists()) {
             return;
         }
-        FileUtil.installAPK(mContext, apkfile);
+        FileUtil.installAPK(mContext, apkfile,application_id);
     }
 
     private Runnable mdownApkRunnable = new Runnable() {

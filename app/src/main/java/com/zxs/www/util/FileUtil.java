@@ -1057,14 +1057,14 @@ public class FileUtil {
      * @param context
      * @param file
      */
-    public static void installAPK(Context context, File file) {
+    public static void installAPK(Context context, File file,String application_id) {
         if (file == null || !file.exists()) {
             return;
         }
         Intent intent = new Intent(Intent.ACTION_VIEW);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            Uri contentUri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileProvider", file);
+            Uri contentUri = FileProvider.getUriForFile(context, application_id + ".fileProvider", file);
             intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
         } else {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
