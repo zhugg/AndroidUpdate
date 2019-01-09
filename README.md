@@ -18,7 +18,7 @@ gradle文件添加：
 
     dependencies {
 
-        compile 'com.github.zhugg:AndroidUpdate:V1.0'
+     implementation 'com.github.zhugg:AndroidUpdate:1.1.0'
 
     }
     
