@@ -77,7 +77,7 @@ public class PopupDialog extends Dialog {
 		TextView txt_content = (TextView) view.findViewById(R.id.txt_content);
 
 		txt_content.setText(content);
-		
+
 		if (confirmButtonText != null && !confirmButtonText.equals("")) {
 			tvConfirm.setText(confirmButtonText);
 		}

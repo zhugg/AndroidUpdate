@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 group='com.github.zhugg'
 
 android {
@@ -7,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
-        versionCode 1010
-        versionName "1.0.1"
+        versionCode 1200
+        versionName "1.2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -29,4 +30,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:' + rootProject.supportVersion
     compile 'com.android.support:design:' + rootProject.supportVersion
     implementation project(':app')
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
