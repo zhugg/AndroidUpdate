@@ -8,14 +8,6 @@ AlertDialogUtil.getInstance().alertVersion(this, description, url, isForceUpdate
 
 gradle文件添加：
 
-    repositories {
-
-        jcenter()
-
-        maven { url"https://jitpack.io" }
-
-    }
-
     dependencies {
 
      implementation 'com.github.zhugg:AndroidUpdate:1.1.0'
